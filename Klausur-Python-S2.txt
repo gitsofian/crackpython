@@ -1,0 +1,49 @@
+Klausur Python Stufe 2
+25.03.2022
+
+Der Konstruktur ist die erste Methode in der Klasse aufgeruft wenn ein Objekt von einer Klasse erstellt ist.
+
+Vererbung ist ein wichtigste Prinzip in OOP. Eine Kind-Klasse erbt von Eltern-Klasse alle Attributen und Methoden. Vererbung ist die Verbindung zwischen Eltern-Klasse und Kind-Klasse.
+
+Dictionary ist eine DatenStuktur, die die Daten wie Key-Value vorstellen kann.
+Bsp. Auto = {
+    "farbe": "weiß",
+    "Reifen": 4
+    "Tür": 4
+}
+
+class Mensch:
+    def __init__(self, geschlecht, alter, groesse, gewicht):
+        self.geschlecht = geschlecht
+        self.alter = alter
+        self.groesse = groesse
+        self.gewicht = gewicht
+    def __str__(self):
+        return f"Geschlecht: {self.geschlecht}\n Grösse: {self.groesse}\n Gewicht: {self.gewicht}"
+
+def __str__(self):
+    return str(self.groesse) + ', ' + str(self.geschmack)
+
+Übergebeparameter self in der Funktion __str__ felt aus. Wir können nicht die Attibute groesse und geschmack zugreifen.
+
+Datentypen: int, float, str, bool, None
+DatenStrukturen: List, Tupel, Set, Dictionary
+
+class Obst:
+    def **init**(self, name: str, preis: float, urspungsland: str):
+        self.name = name
+        self.preis = preis
+        self.urspungsland = urspungsland
+
+    def __str__(self):
+        return f"Name des Obsts: {self.name}\n Preis/kg: {self.preis}\n Ursprungsland: {self.ursprungsland}\n"
+
+    def änderePreis(self, preis) -> None:
+        self.preis = preis
+
+    def berechneVerkaufspreis(self, gewicht) -> float
+        return self.gewicht * self.preis
+
+class Banane(Obst):
+    def __init__(self):
+        super().__init__(self):
