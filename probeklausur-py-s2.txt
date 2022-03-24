@@ -41,17 +41,21 @@ class Obst:
     def änderePreis(self, preis) -> None:
         self.preis = preis
 
-    def berechneVerkaufspreis(self, gewicht) -> float
-        return self.gewicht * self.preis
+    def berechneVerkaufspreis(self, gewichtInKg) -> float
+        return gewichtInKg * self.preis
 
 class Banane(Obst):
     def __init__(self, reifegrad: str, preis: float):
         super().__init__(self, 'Banane', preis, 'Angola'):
         self.reifegrad = reifegrad
     
-    def berechneVerkaufspreis(self, gewicht):
-        gewicht *= 0.9
-        super().berechneVerkaufspreis(gewicht)
+    def __str__():
+        return f""
+
+
+    def berechneVerkaufspreis(self, gewichtInKg):
+        gewichtInKg *= 0.9
+        super().berechneVerkaufspreis(gewichtInKg)
 
 class Apfel(Obst):
     def __init__(self, farbe: str, preis: float):
