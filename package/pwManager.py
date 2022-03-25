@@ -30,7 +30,7 @@ class Account:
     
     def recapAccount(self):
         for acc in self.__accounts:
-            print(f"Program: {acc.__program}\t Username: {acc.__username}\t Password: {acc.__password}\t isAdminAccount: {acc.isAdminAccount()}\n")
+            print(f"Program: {acc.__program}\n Username: {acc.__username}\n Password: {acc.__password}\n isAdminAccount: {acc.isAdminAccount()}\n")
         print(f"Insgesamte Account würde erstellt: {len(self.__accounts)}")
     
     def getProgrammName(self) -> str:
