@@ -1,10 +1,7 @@
-from cgitb import text
 import requests
 
-
-class RequestExeption(Exception):
-    def __str__(self):
-        print(f"Problem occur! Check the Error!")
+# requests Module enthalt sich Exception Methode
+# versuch in der Funktion requests.get() timeout = 3
 
 
 class Person:
@@ -21,35 +18,11 @@ class Person:
 def getSWPeople(url: str):
 
     try:
-        response = requests.get(url, timeout=3)
+        response = requests.get(url, timeout=10)
         response.raise_for_status()
-
         print('Status Code :', response.status_code)
-
         data = response.json()
-        print(f"data keys: {data.keys()} \n")
-        print(f"count: {data['count']} \n")
-        print(f"count: {data['next']} \n")
-        print(f"count: {data['previous']} \n")
-
-        peoples = data["results"]
-        print()
-        print(f"People's keys: {peoples[0].keys()} \n")
-
-        persons = []
-        # print all the people element
-        for p in peoples:
-            person = Person(p['name'], p['height'], p['mass'], p['hair_color'])
-            persons.append(person)
-            # print(f"Name: {p['name']}")
-            print(person)
-
-        # check the next page link
-        next_url = data['next']
-        if not next_url:
-            return -1
-        else:
-            return next_url
+        return [data["results"], data["next"]]  # return peoples in results
 
     except requests.exceptions.ConnectionError as e:
         print(e)
@@ -61,17 +34,25 @@ def getSWPeople(url: str):
         print(e)
 
 
-url = "https://swapi.dev/api/people/s"
-url = print(getSWPeople(url))
+def extractSWPeople(url):
+    persons: Person = []
 
-'''
-ctrl = True     # control variable
-while(ctrl):
-    resp = print(getSWPeople(url))
-    if resp == -1:
-        print('No People enough!')
-        ctrl = False
-    else:
-        print(f"next url: {resp}")
-        url = resp
-'''
+    while url:
+        peoples, url = getSWPeople(url)
+
+        # print(f"People's keys: {peoples[0].keys()} \n")
+        # print all the people element
+        for p in peoples:
+            person = Person(p['name'], p['height'], p['mass'], p['hair_color'])
+            persons.append(person)
+            # print(f"Name: {p['name']}")
+            # print(person)
+    return persons
+
+
+# Extract all people
+url = "https://swapi.dev/api/people"
+persons = extractSWPeople(url)
+print(len(persons))
+for person in persons:
+    print(person)
